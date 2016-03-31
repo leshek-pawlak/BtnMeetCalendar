@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 
 import { Header } from './components/header'
 
+import bootstrap from 'bootstrap/dist/css/bootstrap.css'
 import styles from '../css/main.css'
 
 
