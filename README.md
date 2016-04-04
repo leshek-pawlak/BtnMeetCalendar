@@ -1,72 +1,69 @@
 # BtnMeetCalendar
-Todo list + google calendar + slack integration (Node.js, Angular2)
+#### Todo list + google calendar + slack integration (Node.js, Angular2)
 
----
 
-> **v0.1**
+# v0.1
 
 
 ## Backend
 
-### Actions 
+#### Actions 
 - [ ] get calendar from Google API 
 - [ ] send parsed Json to frontend 
 
-### Slack (#btn_rooms) 
+#### Slack (#btn_rooms) 
 
 - [ ] room is reserved to ... (date)
 
-### Google Calendar 
+#### Google Calendar 
 
 - [ ] get calendar 
 
-### Issues
+#### Issues
 
 - [ ] resolve events collisions
 
----
 
 ## Frontend 
 
-### Angular2 
+#### Angular2 
 
 - [ ] parse data from Node.js to view 
 
-### CSS
+#### CSS
 
 - [ ] styles timeline
 
 ---
 
 
-> **v0.2**
+# v0.2
 
 
 ## Backend
 
-### Actions 
+#### Actions 
 
 - [ ] add new event in first free space  
 - [ ] delay start (move next event X minutes later) 
 
-### Slack (#btn_rooms) 
+#### Slack (#btn_rooms) 
 
 - [ ] start next event is delayed (title, how much, planned start)
 
-### Google Calendar 
+#### Google Calendar 
 
 - [ ] change event in calendar (delay start) 
 - [ ] add new event in the first empty space 
 
-### Issues
+#### Issues
 
 - [ ] title and user of created event in the first free space
 
----
 
 ## Frontend 
 
-### Angular2 
+#### Angular2 
 
 - [ ] actions 
   - [ ] delay start of the next event
@@ -76,41 +73,40 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
   - [ ] delay start of next event (minutes) 
   - [ ] add new event in the first free space (minutes)
 
-### CSS
+#### CSS
 
 - [ ] animations  
   - [ ] available room 
   - [ ] reserved room 
 
-### Issues
+#### Issues
 
 - [ ] title and duration of new event. How should look picker and options
 
 ---
 
 
-> **v0.3**
+# v0.3
 
 
 ## Backend
 
-### Actions 
+#### Actions 
 
 - [ ] edit / remove today's event in calendar
 
-### Slack (#btn_rooms) 
+#### Slack (#btn_rooms) 
 
 - [ ] today's event is removed / changed (title, time) 
 
-### Issues
+#### Issues
 
 - [ ] title and user of created event in the first free space
 
----
 
 ## Frontend 
 
-### Angular2 
+#### Angular2 
 
 - [ ] actions 
   - [ ] edit / remove today's events
@@ -118,6 +114,6 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 - [ ] buttons
   - [ ] edit / remove today's events
 
-### Issues
+#### Issues
 
 - [ ] quick and simple authorization before edit events 
