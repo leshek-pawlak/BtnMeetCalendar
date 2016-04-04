@@ -42,6 +42,7 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 - buttons
   - delay start of next event (minutes) 
   - add new event as fast as it's possible (minutes) 
+  - edit / remove today's events
 
 ### CSS
 
