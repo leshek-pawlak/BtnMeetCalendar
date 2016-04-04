@@ -33,7 +33,7 @@ a {
     h4 {
         text-align: center;
     }
-    .col-md-3 {
+    .col-md-4 {
         border-right: solid 1px $blue ;
         &:last-child {
             border-right: none;
