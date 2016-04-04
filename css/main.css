@@ -5,13 +5,19 @@ $red: #dd3930;
 $yellow: #eeb93d;
 $green: #51aa66;
 
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
-	/*background: green;*/
 	margin-top: 80px;
 }
 
 .navbar {
 	border-bottom: solid 1px $blue;
+}
+.navbar-brand {
+    margin-right: 2rem;
 }
 
 a {
@@ -19,4 +25,18 @@ a {
 	&:hover {
 		text-decoration: underline;
 	}
+}
+
+
+/*pipeline*/
+.pipeline {
+    h4 {
+        text-align: center;
+    }
+    .col-md-3 {
+        border-right: solid 1px $blue ;
+        &:last-child {
+            border-right: none;
+        }
+    }
 }
