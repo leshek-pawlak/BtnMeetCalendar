@@ -3,7 +3,6 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 
 > **v0.1**
 
----
 
 ## Backend
 
@@ -39,7 +38,7 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 ---
 
 > **v0.2**
----
+
 
 ## Backend
 
@@ -89,7 +88,7 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 ---
 
 > **v0.3**
----
+
 
 ## Backend
 
