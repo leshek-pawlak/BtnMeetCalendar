@@ -3,8 +3,8 @@ import { Link } from 'react-router';
 
 export class Header extends Component {
     render() {
-        return <nav className="navbar navbar-fixed-top navbar-dark bg-inverse">
-            <a className="navbar-brand" href="#">btnmanager</a>
+        return <nav className="navbar navbar-fixed-top">
+            <a className="navbar-brand" href="#"><img src="img/logo.png"/></a>
             <ul className="nav navbar-nav">
                 <li className="nav-item active">
                   <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>

@@ -7,6 +7,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var postcssImport = require('postcss-import');
+var precss        = require('precss');
+var autoprefixer  = require('autoprefixer');
+
 module.exports = function makeWebpackConfig(options) {
     /**
      * Environment type
@@ -101,7 +105,7 @@ module.exports = function makeWebpackConfig(options) {
         //     exclude: /node_modules/,
         // }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader',
+            loader: 'style-loader!css-loader!postcss-loader',
         }, {
             test: /\.json$/,
             loader: 'json-loader',
@@ -121,6 +125,24 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.html$/,
             loader: 'raw'
         }]
+    };
+
+    /**
+     * PostCSS
+     * Reference: https://github.com/postcss/autoprefixer-core
+     * Add vendor prefixes to your css
+     */
+    config.postcss = function(webpack) {
+        return [
+            postcssImport({
+                async: true,
+                addDependencyTo: webpack
+            }),
+            autoprefixer({
+                browsers: ['last 2 versions']
+            }),
+            precss()
+        ];
     };
 
     /**

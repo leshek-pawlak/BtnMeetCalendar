@@ -1,3 +1,22 @@
+@import "bootstrap";
+
+$blue: #293e7d;
+$red: #dd3930;
+$yellow: #eeb93d;
+$green: #51aa66;
+
 body {
 	/*background: green;*/
+	margin-top: 80px;
+}
+
+.navbar {
+	border-bottom: solid 1px $blue;
+}
+
+a {
+	color: $blue;
+	&:hover {
+		text-decoration: underline;
+	}
 }
