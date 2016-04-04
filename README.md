@@ -1,6 +1,8 @@
 # BtnMeetCalendar
 Todo list + google calendar + slack integration (Node.js, Angular2)
 
+---
+
 > **v0.1**
 
 
@@ -35,7 +37,7 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 - [ ] styles timeline
 
 ---
----
+
 
 > **v0.2**
 
@@ -85,7 +87,7 @@ Todo list + google calendar + slack integration (Node.js, Angular2)
 - [ ] title and duration of new event. How should look picker and options
 
 ---
----
+
 
 > **v0.3**
 
