@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { addLead } from '../actions';
 
 import Lead from '../components/lead';
 
-var data = {id: 1, title: 'lead', body: 'description'};
-
 const propTypes = {
   leads: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 class Pipeline extends Component {
 
     renderLeads() {
-        return this.props.leads.map(lead => 
+        return this.props.leads.map(lead =>
             <Lead lead={lead} key={lead.id}/>
         )
     }
@@ -23,6 +23,7 @@ class Pipeline extends Component {
                 <h4>Lead</h4>
                 <h5>{this.props.leads.length} lead worth: $25,000</h5>
                 {this.renderLeads()}
+                <a href="#" onClick={this.props.onClick}>add new</a>
             </div>
             <div className="col-md-4">
                 <h4>Deal</h4>
@@ -34,7 +35,7 @@ class Pipeline extends Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const { leads } = state.leads;
 
   return {
@@ -42,4 +43,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Pipeline);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick: () => {
+        dispatch(addLead())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pipeline);

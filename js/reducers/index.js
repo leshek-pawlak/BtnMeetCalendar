@@ -5,9 +5,19 @@ const initialState = {
 }
 
 function leads(state = initialState, action) {
-  // For now, don’t handle any actions
-  // and just return the state given to us.
-  return state
+    switch (action.type) {
+        case 'ADD_LEAD':
+            return {
+                ...state,
+                leads: [
+                    ...state.leads,
+                    {id: 2, title: 'lead reducer 2', body: 'description reducer 2'},
+                ]
+            }
+
+        default:
+          return state
+    }
 }
 
 const app = combineReducers({
