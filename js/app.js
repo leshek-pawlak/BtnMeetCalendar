@@ -7,7 +7,7 @@ import { Header } from './components/header'
 import styles from '../css/main.css'
 
 
-export class App extends Component {
+class App extends Component {
     static propTypes = {
     }
 
@@ -18,3 +18,6 @@ export class App extends Component {
         </div>
     }
 }
+
+
+export default App;

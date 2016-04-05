@@ -1,20 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { App } from './app'
-import { Pipeline } from './pages/pipeline'
-import { TimePerDay } from './pages/time_per_day'
+import { Provider } from 'react-redux';
+
+import App from './app'
+import Pipeline from './containers/pipeline'
+import configureStore from './store/configureStore';
 
 'use strict'
 
+const store = configureStore();
+
 ReactDOM.render(
-	<div>
+	<Provider store={store}>
 	  	<Router history={browserHistory}>
 	        <Route path="/" component={App}>
 	            <IndexRoute component={Pipeline}/>
-	            <Route path="time_per_day" component={TimePerDay}/>
 	        </Route>
 	    </Router>
-	</div>,
+	</Provider>,
   document.getElementById('root')
 )
