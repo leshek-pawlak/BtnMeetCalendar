@@ -1,5 +1,5 @@
 export const addLead = () => {
   return {
-    type: 'ADD_LEAD'
-  }
-}
+    type: 'ADD_LEAD',
+  };
+};

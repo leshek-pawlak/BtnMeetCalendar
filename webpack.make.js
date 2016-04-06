@@ -100,10 +100,17 @@ module.exports = function makeWebpackConfig(options) {
             loader: 'babel',
             exclude: /node_modules/,
         }, {
-        //     test: /\.js$/,
-        //     loader: 'eslint',
-        //     exclude: /node_modules/,
-        // }, {
+            test: /\.jsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel', // 'babel-loader' is also a legal name to reference
+            query: {
+                presets: ['es2015']
+            }
+        }, {
+            test: /\.js$/,
+            loader: 'eslint',
+            exclude: /node_modules/,
+        }, {
             test: /\.css$/,
             loader: 'style-loader!css-loader!postcss-loader',
         }, {

@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 
-export class Header extends Component {
+class Header extends Component {
     render() {
         return <nav className="navbar navbar-fixed-top">
             <a className="navbar-brand" href="#"><img src="img/logo.png"/></a>
@@ -19,6 +19,8 @@ export class Header extends Component {
                   <a className="nav-link" href="#">About</a>
                 </li>
             </ul>
-        </nav>;
+        </nav>
     }
 }
+
+export default Header

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { addLead } from '../actions';
 
-import Lead from '../components/lead';
+import Lead from '../components/lead.jsx';
 
 const propTypes = {
   leads: PropTypes.object.isRequired,
