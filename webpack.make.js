@@ -6,12 +6,13 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 var postcssImport = require('postcss-import');
 var precss        = require('precss');
 var autoprefixer  = require('autoprefixer');
 
-module.exports = function makeWebpackConfig(options) {
+module.exports = function makeWebpackConfig() {
     /**
      * Environment type
      * BUILD is for generating minified builds
@@ -100,13 +101,6 @@ module.exports = function makeWebpackConfig(options) {
             loader: 'babel',
             exclude: /node_modules/,
         }, {
-            test: /\.jsx?$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: 'babel', // 'babel-loader' is also a legal name to reference
-            query: {
-                presets: ['es2015']
-            }
-        }, {
             test: /\.js$/,
             loader: 'eslint',
             exclude: /node_modules/,
@@ -172,6 +166,13 @@ module.exports = function makeWebpackConfig(options) {
         // Reference: https://github.com/ampedandwired/html-webpack-plugin
         // Render index.html
         config.plugins.push(
+            // Generate common chunks if necessary
+            // Reference: https://webpack.github.io/docs/code-splitting.html
+            // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+            new CommonsChunkPlugin({
+                name: ['app', 'vendor', 'polyfills'],
+                minChunks: Infinity
+            }),
             new HtmlWebpackPlugin({
                 template: './index.html',
                 inject: 'body',
