@@ -1,32 +1,33 @@
-'use strict';
+'use strict'
 
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require('webpack')
+var path = require('path')
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
 
-var postcssImport = require('postcss-import');
-var precss        = require('precss');
-var autoprefixer  = require('autoprefixer');
+var postcssImport = require('postcss-import')
+var postcssFontMagician = require('postcss-font-magician')
+var precss = require('precss')
+var autoprefixer = require('autoprefixer')
 
-module.exports = function makeWebpackConfig() {
+module.exports = function makeWebpackConfig(options) {
     /**
      * Environment type
      * BUILD is for generating minified builds
      * TEST is for generating test builds
      */
-    var BUILD = !!options.BUILD;
-    var TEST = !!options.TEST;
+    var BUILD = !!options.BUILD
+    var TEST = !!options.TEST
 
     /**
      * Config
      * Reference: http://webpack.github.io/docs/configuration.html
      * This is the object where all configuration gets set
      */
-    var config = {};
+    var config = {}
 
     /**
      * Entry
@@ -35,10 +36,10 @@ module.exports = function makeWebpackConfig() {
      * Karma will set this when it's a test build
      */
     if (TEST) {
-        config.entry = {};
+        config.entry = {}
     } else {
         config.entry = {
-            app: ['./js/index']
+            app: ['./js/index'],
         }
     }
 
@@ -49,7 +50,7 @@ module.exports = function makeWebpackConfig() {
      * Karma will handle setting it up for you when it's a test build
      */
     if (TEST) {
-        config.output = {};
+        config.output = {}
     } else {
         config.output = {
             // Absolute output directory
@@ -65,8 +66,8 @@ module.exports = function makeWebpackConfig() {
 
             // Filename for non-entry points
             // Only adds hash in build mode
-            chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js'
-        };
+            chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js',
+        }
     }
 
     /**
@@ -75,11 +76,11 @@ module.exports = function makeWebpackConfig() {
      * Type of sourcemap to use per build type
      */
     if (TEST) {
-        config.devtool = 'inline-source-map';
+        config.devtool = 'inline-source-map'
     } else if (BUILD) {
-        config.devtool = 'source-map';
+        config.devtool = 'source-map'
     } else {
-        config.devtool = 'eval';
+        config.devtool = 'eval'
     }
 
     /**
@@ -118,15 +119,15 @@ module.exports = function makeWebpackConfig() {
             // Pass along the updated reference to your code
             // You can add here any file extension you want to get copied to your output
             test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-            loader: 'file'
+            loader: 'file',
         }, {
             // HTML LOADER
             // Reference: https://github.com/webpack/raw-loader
             // Allow loading html through js
             test: /\.html$/,
-            loader: 'raw'
-        }]
-    };
+            loader: 'raw',
+        }],
+    }
 
     /**
      * PostCSS
@@ -137,14 +138,15 @@ module.exports = function makeWebpackConfig() {
         return [
             postcssImport({
                 async: true,
-                addDependencyTo: webpack
+                addDependencyTo: webpack,
             }),
             autoprefixer({
-                browsers: ['last 2 versions']
+                browsers: ['last 2 versions'],
             }),
-            precss()
-        ];
-    };
+            postcssFontMagician(),
+            precss(),
+        ]
+    }
 
     /**
      * Plugins
@@ -156,10 +158,10 @@ module.exports = function makeWebpackConfig() {
         // Extract css files
         // Disabled when in test mode or not in build mode
         new ExtractTextPlugin('[name].[hash].css', {
-            disable: !BUILD || TEST
+            disable: !BUILD || TEST,
         }),
-        new webpack.optimize.OccurenceOrderPlugin()
-    ];
+        new webpack.optimize.OccurenceOrderPlugin(),
+    ]
 
     // Skip rendering index.html in test mode
     if (!TEST) {
@@ -171,20 +173,20 @@ module.exports = function makeWebpackConfig() {
             // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
             new CommonsChunkPlugin({
                 name: ['app', 'vendor', 'polyfills'],
-                minChunks: Infinity
+                minChunks: Infinity,
             }),
             new HtmlWebpackPlugin({
                 template: './index.html',
                 inject: 'body',
             })
-        );
+        )
     }
 
      // Skip rendering index.html in test mode
     if (!TEST && !BUILD) {
         config.plugins.push(
             new webpack.HotModuleReplacementPlugin()
-        );
+        )
     }
 
     // Add build specific plugins
@@ -192,8 +194,8 @@ module.exports = function makeWebpackConfig() {
         config.plugins.push(
             new webpack.DefinePlugin({
                 'process.env': {
-                    'NODE_ENV': '"production"'
-                }
+                    'NODE_ENV': '"production"',
+                },
             }),
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
             // Only emit files when there are no errors
@@ -204,12 +206,12 @@ module.exports = function makeWebpackConfig() {
             // copy external lib
             new CopyWebpackPlugin([
                 {
-                    from: './.htaccess'
-                }
-            ])
+                    from: './.htaccess',
+                },
+            ]),
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
             // Minify all javascript, switch loaders to minimizing mode
-            //new webpack.optimize.UglifyJsPlugin()
+            // new webpack.optimize.UglifyJsPlugin()
         )
     }
 
@@ -224,9 +226,9 @@ module.exports = function makeWebpackConfig() {
             modules: false,
             cached: false,
             colors: true,
-            chunk: false
-        }
-    };
+            chunk: false,
+        },
+    }
 
-    return config;
-};
+    return config
+}
