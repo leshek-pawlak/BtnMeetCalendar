@@ -5,6 +5,7 @@ import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
 import {Home} from './home';
+import {Calendar} from './calendar';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
 
@@ -52,6 +53,10 @@ import {RouterActive} from './router-active';
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
+          |
+          <li router-active>
+            <a [routerLink]=" ['Calendar'] ">Calendar</a>
+          </li>
         </ul>
       </nav>
     </md-toolbar>
@@ -73,6 +78,7 @@ import {RouterActive} from './router-active';
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
+  { path: '/calendar', name: 'Calendar', component: Calendar },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
 ])

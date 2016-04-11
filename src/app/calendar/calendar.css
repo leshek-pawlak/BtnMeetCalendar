@@ -1,0 +1,9 @@
+md-card-title-text, md-card-title-media {
+    display: inline-block;
+}
+
+md-card-title-media {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+}
