@@ -130,4 +130,4 @@ npm run dev
 
 #### Issues
 
-- [ ] quick and simple authorization before edit events
+- [ ] quick and simple authorization before edit events (qrCode, google authenticator, or ?)
